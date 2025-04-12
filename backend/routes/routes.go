@@ -2,6 +2,8 @@ package routes
 
 import (
 	"os"
+	"stocks_etf/backend/api"
+	"stocks_etf/backend/database"
 	"strings"
 	"time"
 
@@ -12,11 +14,15 @@ import (
 func SetupAPIRoutes(router *gin.Engine) {
 	setupCORS(router)
 
+	handler := api.NewHandler(database.DB)
+
 	apiRouter := router.Group("/api")
 	{
 		apiRouter.GET("/hello", func(c *gin.Context) {
 			c.JSON(200, gin.H{"message": "hello from backend"})
 		})
+
+		apiRouter.GET("/get_data", handler.GetData)
 
 	}
 }
