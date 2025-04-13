@@ -11,7 +11,7 @@ export const prepReserveData = (reserves) => {
 	barDataStore.set({ categories, data });
 };
 
-export const transactionStore = writable({});
+export const transactionStore = writable([]);
 
 export const clickedTickers = writable(
 	new Set(['EXI', 'IXC', 'IXG', 'IXN', 'JXI', 'IXP', 'RXI', 'KXI', 'MXI', 'REET', 'IXJ'])

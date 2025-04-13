@@ -8,8 +8,6 @@
 	const barData = $derived($barDataStore);
 	const activeCategories = $derived($clickedTickers);
 	const activeCategoriesArray = $derived([...activeCategories]);
-	const categories = $derived(barData.categories);
-	const data = $derived(barData.data);
 
 	let chart;
 	let filteredBarData = $state({
