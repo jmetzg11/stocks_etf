@@ -5,8 +5,6 @@ import (
 	"io"
 	"log"
 	"os"
-	"path/filepath"
-	"runtime"
 	"stocks_etf/backend/models"
 	"strconv"
 	"time"
@@ -19,9 +17,7 @@ var DB *gorm.DB
 
 func Connect() error {
 	var err error
-	_, filename, _, _ := runtime.Caller(0)
-	basepath := filepath.Dir(filename)
-	DB, err = gorm.Open(sqlite.Open(filepath.Join(basepath, "data/data.db")), &gorm.Config{})
+	DB, err = gorm.Open(sqlite.Open("data/data.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database", err)
 	}
@@ -40,9 +36,7 @@ func seedDB(db *gorm.DB) {
 		return
 	}
 
-	_, filename, _, _ := runtime.Caller(0)
-	basepath := filepath.Dir(filename)
-	transactionsFile, err := os.Open(filepath.Join(basepath, "stock_transactions.csv"))
+	transactionsFile, err := os.Open("data/stock_transactions.csv")
 	if err != nil {
 		log.Println("Error opening stock_transactions.csv:", err)
 		return
@@ -96,7 +90,7 @@ func seedDB(db *gorm.DB) {
 		}
 	}
 
-	valuesFile, err := os.Open(filepath.Join(basepath, "stock_values.csv"))
+	valuesFile, err := os.Open("data/stock_values.csv")
 	if err != nil {
 		log.Println("Error opening stock_values.csv", err)
 		return
