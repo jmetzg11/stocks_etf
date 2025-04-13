@@ -20,7 +20,6 @@
 	}
 
 	$effect(() => {
-		console.log('calculating categories');
 		const allDates = new Set();
 		transactionData
 			.filter((item) => activeCategories.has(item.Stock))
@@ -38,7 +37,6 @@
 		xAxisCategories = Array.from(allDates).sort((a, b) => new Date(a) - new Date(b));
 	});
 	$effect(() => {
-		console.log('making filtered data');
 		const groupedData = {};
 		transactionData
 			.filter((item) => activeCategories.has(item.Stock))
@@ -65,11 +63,7 @@
 		}));
 	});
 	$effect(() => {
-		console.log('making line colors');
 		lineColors = FilteredData.map((item) => colorMapper[item.name]);
-	});
-	$effect(() => {
-		$inspect(FilteredData);
 	});
 
 	async function initializeChart() {

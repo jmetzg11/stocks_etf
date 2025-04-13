@@ -4,6 +4,8 @@
 	import TopPart from './TopPart.svelte';
 	import Bars from './Bars.svelte';
 	import LineGraph from './LineGraph.svelte';
+	import FullTable from './FullTable.svelte';
+	import Info from './Info.svelte';
 	let data = [];
 	onMount(() => {
 		getData();
@@ -22,10 +24,10 @@
 			<LineGraph />
 		</div>
 		<div class="md:col-span-2 overflow-y-auto max-h-[250px] mb-3">
-			<h1>full table</h1>
+			<FullTable />
 		</div>
 	</div>
 	<div>
-		<h1>Info</h1>
+		<Info />
 	</div>
 </div>
