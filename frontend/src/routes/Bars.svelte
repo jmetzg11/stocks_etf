@@ -24,8 +24,6 @@
 			categories: barData.categories.filter((category) => activeCategories.has(category)),
 			data: barData.data.filter((_, index) => activeCategories.has(barData.categories[index]))
 		};
-
-		barColors = activeCategoriesArray.map((c) => colorMapper[c]);
 	});
 
 	async function initializeChart() {
@@ -95,8 +93,8 @@
 	}
 
 	function updateChart() {
-		console.log('update chart was called');
 		if (filteredBarData && chart) {
+			const updatedBarColors = filteredBarData.categories.map((c) => colorMapper[c]);
 			const columnWidth =
 				filteredBarData.data.length > 2 ? '85%' : `${100 / filteredBarData.data.length}%`;
 
@@ -108,7 +106,7 @@
 							data: filteredBarData.data
 						}
 					],
-					colors: barColors,
+					colors: updatedBarColors,
 					plotOptions: {
 						bar: {
 							distributed: true,
