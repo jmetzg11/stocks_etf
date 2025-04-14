@@ -1,0 +1,34 @@
+# flyctl launch added from .gitignore
+**/tmp
+
+**/*.txt
+**/*.csv
+**/data/data.db
+**/.env
+**/*.log
+
+# flyctl launch added from frontend/.gitignore
+frontend/**/node_modules
+
+# Output
+frontend/**/.output
+frontend/**/.vercel
+frontend/**/.netlify
+frontend/**/.wrangler
+frontend/.svelte-kit
+frontend/build
+
+# OS
+frontend/**/.DS_Store
+frontend/**/Thumbs.db
+
+# Env
+frontend/**/.env
+frontend/**/.env.*
+!frontend/**/.env.example
+!frontend/**/.env.test
+
+# Vite
+frontend/**/vite.config.js.timestamp-*
+frontend/**/vite.config.ts.timestamp-*
+fly.toml

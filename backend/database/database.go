@@ -62,7 +62,8 @@ func seedDB(db *gorm.DB) {
 			continue
 		}
 
-		id, _ := strconv.Atoi(record[0])
+		id64, _ := strconv.ParseUint(record[0], 10, 32)
+		id := uint(id64)
 		createdAt, _ := time.Parse("2006-01-02", record[2])
 		percent, _ := strconv.ParseFloat(record[3], 64)
 		value, _ := strconv.ParseFloat(record[4], 64)

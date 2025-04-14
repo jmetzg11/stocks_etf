@@ -18,6 +18,7 @@ func GetTotalReserves() float64 {
 		log.Printf("Failed to query values: %v", result.Error)
 		return total
 	}
+	log.Println("result", result)
 
 	for _, value := range values {
 		total += value.Value
@@ -37,6 +38,7 @@ func UpdateReserves(reserves, balance float64) map[string]float64 {
 
 	for _, etf := range EtfList {
 		// Attempt to find existing record
+		log.Println(etf)
 		var value models.Value
 		result := DB.Where("stock = ?", etf).First(&value)
 

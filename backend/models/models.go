@@ -3,7 +3,7 @@ package models
 import "time"
 
 type Transaction struct {
-	ID             int
+	ID             uint `gorm:"primaryKey"`
 	Stock          string
 	CreatedAt      time.Time
 	Percent        float64
@@ -13,7 +13,8 @@ type Transaction struct {
 }
 
 type Value struct {
-	Stock     string
+	ID        uint   `gorm:"primaryKey"`
+	Stock     string `gorm:"uniqueIndex"`
 	CreatedAt time.Time
 	Value     float64
 }
