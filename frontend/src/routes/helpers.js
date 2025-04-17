@@ -1,7 +1,8 @@
 import { transactionStore, prepReserveData } from './store';
 
 export const getData = async () => {
-	const url = import.meta.env.VITE_API_URL + '/get_data';
+	const apiUrl = import.meta.env.VITE_API_URL || '/api';
+	const url = apiUrl + '/get_data';
 	const response = await fetch(url);
 	const data = await response.json();
 	transactionStore.set(data.transactions);

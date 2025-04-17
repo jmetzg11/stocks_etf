@@ -1,0 +1,5 @@
+
+[[scheduled_jobs]]
+command = "/app/scheduler"
+name = "alpaca-job"
+schedule = "0 40 12 * * 1-5"

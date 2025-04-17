@@ -32,7 +32,6 @@ func seedDB(db *gorm.DB) {
 	var count int64
 	db.Model(&models.Transaction{}).Count(&count)
 	if count > 0 {
-		log.Println("Database already has data, skipping seed")
 		return
 	}
 
